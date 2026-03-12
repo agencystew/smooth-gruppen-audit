@@ -3,24 +3,28 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Truckførerkurs — Kurs og Sikkerhet | Book i dag</title>
+<title>Truckf&oslash;rerkurs T1&ndash;T5 &mdash; Kurs og Sikkerhet | Book kurs i dag</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Sora:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
+/* ===== DESIGN TOKENS (extracted from kursogsikkerhet.no) ===== */
 :root {
-  --brand: #E8650A;
-  --brand-dark: #C75508;
-  --brand-light: #FFF3EB;
+  --brand: #f37c20;
+  --brand-dark: #c25c0e;
+  --brand-light: #FFF5ED;
+  --navy: #27425b;
+  --navy-dark: #213b56;
   --dark: #1A1D23;
   --text: #2D3039;
-  --text2: #6B7085;
+  --text2: #617384;
   --text3: #9CA0B0;
   --bg: #FAFBFD;
+  --bg-alt: #f4f6f8;
   --white: #FFFFFF;
   --green: #0FAA5C;
   --green-bg: #EDFAF2;
-  --blue: #2563EB;
-  --border: #E5E7EB;
+  --border: #e8ecef;
   --shadow: 0 1px 3px rgba(0,0,0,.06), 0 4px 12px rgba(0,0,0,.04);
   --shadow-lg: 0 4px 24px rgba(0,0,0,.08);
   --radius: 12px;
@@ -32,92 +36,157 @@ html{font-size:16px;scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
 body{font-family:var(--font-b);color:var(--text);background:var(--bg);line-height:1.6}
 img{max-width:100%;display:block}
 
+/* ========= DRAFT BANNER ========= */
+.draft-banner{background:linear-gradient(90deg,#dc2626,#b91c1c);color:white;text-align:center;padding:10px 16px;font-size:.8rem;font-weight:600;letter-spacing:.02em;position:relative;z-index:100}
+.draft-banner span{background:rgba(255,255,255,.2);padding:2px 8px;border-radius:4px;margin-left:8px;font-size:.75rem}
+
+/* ========= EXAMPLE BANNER ========= */
+.example-banner{background:linear-gradient(90deg,#2563EB,#7C3AED);color:white;text-align:center;padding:10px;font-size:.8rem;font-weight:600;letter-spacing:.02em}
+
 /* ========= HEADER ========= */
-.header{background:var(--white);border-bottom:1px solid var(--border);padding:12px 0;position:sticky;top:0;z-index:50}
+.header{background:var(--white);border-bottom:1px solid var(--border);padding:10px 0;position:sticky;top:0;z-index:50}
 .container{max-width:1080px;margin:0 auto;padding:0 24px}
-.header-inner{display:flex;align-items:center;justify-content:space-between}
-.logo{font-family:var(--font-h);font-weight:700;font-size:1.15rem;color:var(--dark);text-decoration:none}
-.logo span{color:var(--brand)}
+.header-inner{display:flex;align-items:center;justify-content:space-between;gap:16px}
+.header-logo{height:36px;width:auto}
 .header-phone{display:flex;align-items:center;gap:8px;color:var(--text);text-decoration:none;font-weight:600;font-size:.9rem}
 .header-phone svg{color:var(--brand)}
-.header-cta{background:var(--brand);color:var(--white);border:none;padding:10px 20px;border-radius:8px;font-weight:600;font-size:.9rem;cursor:pointer;font-family:var(--font-b);transition:background .2s}
+.header-cta{background:var(--brand);color:var(--white);border:none;padding:10px 20px;border-radius:8px;font-weight:600;font-size:.9rem;cursor:pointer;font-family:var(--font-b);transition:background .2s;text-decoration:none}
 .header-cta:hover{background:var(--brand-dark)}
 
 /* ========= HERO ========= */
-.hero{background:linear-gradient(135deg, var(--dark) 0%, #2A2F3A 100%);color:var(--white);padding:48px 0 56px;position:relative;overflow:hidden}
-.hero::after{content:'';position:absolute;top:0;right:0;width:40%;height:100%;background:url("data:image/svg+xml,%3Csvg width='400' height='400' viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='300' cy='200' r='280' fill='none' stroke='rgba(232,101,10,0.08)' stroke-width='1'/%3E%3Ccircle cx='300' cy='200' r='200' fill='none' stroke='rgba(232,101,10,0.06)' stroke-width='1'/%3E%3Ccircle cx='300' cy='200' r='120' fill='none' stroke='rgba(232,101,10,0.04)' stroke-width='1'/%3E%3C/svg%3E") no-repeat center;pointer-events:none}
-.hero-grid{display:grid;grid-template-columns:1fr auto;gap:40px;align-items:center}
-.hero-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(15,170,92,.15);color:#4ADE80;font-size:.75rem;font-weight:600;padding:4px 12px;border-radius:20px;margin-bottom:16px;text-transform:uppercase;letter-spacing:.04em}
-.hero h1{font-family:var(--font-h);font-size:2.6rem;font-weight:700;line-height:1.15;margin-bottom:12px}
+.hero{background:var(--navy);color:var(--white);padding:0;position:relative;overflow:hidden}
+.hero-grid{display:grid;grid-template-columns:1fr 1fr;min-height:480px}
+.hero-content{padding:48px 40px 48px 0;display:flex;flex-direction:column;justify-content:center;padding-left:max(24px, calc((100vw - 1080px)/2 + 24px))}
+.hero-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(243,124,32,.2);color:var(--brand);font-size:.75rem;font-weight:600;padding:4px 14px;border-radius:20px;margin-bottom:16px;text-transform:uppercase;letter-spacing:.04em;width:fit-content}
+.hero h1{font-family:var(--font-h);font-size:clamp(1.8rem,3.5vw,2.6rem);font-weight:700;line-height:1.15;margin-bottom:12px}
 .hero h1 span{color:var(--brand)}
-.hero-sub{font-size:1.05rem;color:rgba(255,255,255,.7);margin-bottom:24px;max-width:480px}
-.hero-stats{display:flex;gap:32px;margin-top:24px}
-.hero-stat{text-align:center}
-.hero-stat-val{font-family:var(--font-h);font-weight:700;font-size:1.5rem;color:var(--brand)}
-.hero-stat-label{font-size:.75rem;color:rgba(255,255,255,.5);margin-top:2px}
-.hero-price{background:var(--white);border-radius:var(--radius);padding:28px;box-shadow:var(--shadow-lg);color:var(--text);min-width:300px;position:relative;z-index:1}
-.hero-price h3{font-family:var(--font-h);font-size:1rem;margin-bottom:16px;color:var(--dark)}
-.price-main{display:flex;align-items:baseline;gap:4px;margin-bottom:4px}
-.price-main .from{font-size:.85rem;color:var(--text2)}
-.price-main .amount{font-family:var(--font-h);font-weight:700;font-size:2.2rem;color:var(--dark)}
-.price-main .suffix{font-size:.85rem;color:var(--text2)}
-.price-note{font-size:.75rem;color:var(--text3);margin-bottom:20px}
-.price-btn{display:block;width:100%;background:var(--brand);color:var(--white);border:none;padding:14px;border-radius:8px;font-weight:700;font-size:1rem;cursor:pointer;font-family:var(--font-b);transition:background .2s;text-align:center;text-decoration:none}
-.price-btn:hover{background:var(--brand-dark)}
-.price-or{text-align:center;font-size:.8rem;color:var(--text3);margin:12px 0}
-.price-phone{display:flex;align-items:center;justify-content:center;gap:8px;color:var(--text2);font-size:.9rem;text-decoration:none}
-.price-phone:hover{color:var(--brand)}
+.hero-sub{font-size:1.05rem;color:rgba(255,255,255,.75);margin-bottom:28px;max-width:460px;line-height:1.7}
+.hero-cta-row{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+.hero-btn{background:var(--brand);color:var(--white);border:none;padding:14px 28px;border-radius:8px;font-weight:700;font-size:1rem;cursor:pointer;font-family:var(--font-b);transition:all .2s;text-decoration:none;display:inline-flex;align-items:center;gap:8px}
+.hero-btn:hover{background:var(--brand-dark);transform:translateY(-1px)}
+.hero-btn-outline{background:transparent;color:var(--white);border:2px solid rgba(255,255,255,.3);padding:12px 24px;border-radius:8px;font-weight:600;font-size:.95rem;cursor:pointer;font-family:var(--font-b);transition:all .2s;text-decoration:none;display:inline-flex;align-items:center;gap:8px}
+.hero-btn-outline:hover{border-color:rgba(255,255,255,.6);background:rgba(255,255,255,.05)}
+.hero-image-wrap{position:relative;overflow:hidden}
+.hero-image{width:100%;height:100%;object-fit:cover;display:block}
+.hero-price-badge{position:absolute;bottom:24px;right:24px;background:var(--white);border-radius:var(--radius);padding:20px 24px;box-shadow:var(--shadow-lg);text-align:center}
+.hero-price-badge .from{font-size:.75rem;color:var(--text2);display:block}
+.hero-price-badge .amount{font-family:var(--font-h);font-weight:700;font-size:1.6rem;color:var(--dark);display:block}
+.hero-price-badge .suffix{font-size:.7rem;color:var(--text3);display:block}
 
 /* ========= TRUST BAR ========= */
 .trust-bar{background:var(--white);border-bottom:1px solid var(--border);padding:16px 0}
-.trust-items{display:flex;justify-content:center;gap:40px;flex-wrap:wrap}
-.trust-item{display:flex;align-items:center;gap:8px;font-size:.82rem;color:var(--text2)}
+.trust-items{display:flex;justify-content:center;gap:32px;flex-wrap:wrap;align-items:center}
+.trust-item{display:flex;align-items:center;gap:8px;font-size:.82rem;color:var(--text2);font-weight:500}
 .trust-item svg{color:var(--green);flex-shrink:0}
+.trust-badge-img{height:28px;width:auto;opacity:.85}
+
+/* ========= TRUCK SELECTOR ========= */
+.trucks{padding:56px 0;background:var(--white)}
+.section-label{font-size:.75rem;text-transform:uppercase;letter-spacing:.08em;color:var(--brand);font-weight:700;margin-bottom:8px}
+.section-title{font-family:var(--font-h);font-size:clamp(1.3rem,2.5vw,1.6rem);font-weight:600;color:var(--dark);margin-bottom:8px}
+.section-sub{font-size:.9rem;color:var(--text2);margin-bottom:32px;max-width:600px}
+.truck-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.truck-card{background:var(--bg);border:2px solid var(--border);border-radius:var(--radius);padding:0;transition:all .2s;cursor:pointer;position:relative;overflow:hidden}
+.truck-card:hover{border-color:var(--brand);box-shadow:0 0 0 3px rgba(243,124,32,.12)}
+.truck-card.popular{border-color:var(--brand)}
+.truck-card.popular::before{content:'Mest popul\00E6r';position:absolute;top:12px;right:12px;background:var(--brand);color:white;font-size:.65rem;font-weight:700;padding:2px 10px;border-radius:4px;text-transform:uppercase;letter-spacing:.04em;z-index:2}
+.truck-card-img{width:100%;height:140px;object-fit:cover;border-bottom:1px solid var(--border)}
+.truck-card-body{padding:16px 20px 20px}
+.truck-name{font-family:var(--font-h);font-weight:700;font-size:1rem;color:var(--dark);margin-bottom:4px}
+.truck-desc{font-size:.8rem;color:var(--text2);margin-bottom:12px;line-height:1.5}
+.truck-price{font-family:var(--font-h);font-weight:700;color:var(--navy);font-size:1.1rem}
+.truck-price .from{font-size:.75rem;font-weight:400;color:var(--text3)}
+
+/* ========= GALLERY STRIP ========= */
+.gallery{padding:0;background:var(--dark);overflow:hidden}
+.gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:4px}
+.gallery-grid img{width:100%;height:260px;object-fit:cover;transition:transform .3s}
+.gallery-grid img:hover{transform:scale(1.03)}
+/* <!-- REF-IMAGE --> */
+.ref-image{border:2px dashed var(--brand);position:relative}
+.ref-image::after{content:'REF';position:absolute;top:4px;right:4px;background:var(--brand);color:white;font-size:.55rem;padding:1px 5px;border-radius:3px;font-weight:700}
 
 /* ========= DATES ========= */
 .dates{padding:56px 0}
-.section-title{font-family:var(--font-h);font-size:1.5rem;font-weight:600;color:var(--dark);margin-bottom:8px}
-.section-sub{font-size:.9rem;color:var(--text2);margin-bottom:24px}
 .dates-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
 .date-card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:20px;transition:all .2s;cursor:pointer}
-.date-card:hover{border-color:var(--brand);box-shadow:0 0 0 3px rgba(232,101,10,.1)}
-.date-city{font-size:.75rem;color:var(--text3);text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px}
-.date-date{font-family:var(--font-h);font-weight:600;font-size:1rem;color:var(--dark);margin-bottom:8px}
+.date-card:hover{border-color:var(--brand);box-shadow:0 0 0 3px rgba(243,124,32,.1)}
+.date-city{font-size:.7rem;color:var(--brand);text-transform:uppercase;letter-spacing:.06em;font-weight:700;margin-bottom:4px}
+.date-date{font-family:var(--font-h);font-weight:600;font-size:.95rem;color:var(--dark);margin-bottom:2px}
+.date-time{font-size:.75rem;color:var(--text3);margin-bottom:10px}
 .date-meta{display:flex;justify-content:space-between;align-items:center}
-.date-price{font-weight:700;color:var(--dark)}
-.date-spots{font-size:.75rem;padding:3px 10px;border-radius:12px}
+.date-price{font-weight:700;color:var(--dark);font-size:.9rem}
+.date-spots{font-size:.7rem;padding:3px 10px;border-radius:12px;font-weight:600}
 .date-spots.open{background:var(--green-bg);color:var(--green)}
 .date-spots.few{background:#FEF3CD;color:#B45309}
-.date-btn{display:block;width:100%;background:var(--brand);color:var(--white);border:none;padding:10px;border-radius:6px;font-weight:600;font-size:.85rem;cursor:pointer;margin-top:12px;font-family:var(--font-b);transition:background .2s}
+.date-btn{display:block;width:100%;background:var(--brand);color:var(--white);border:none;padding:10px;border-radius:6px;font-weight:600;font-size:.85rem;cursor:pointer;margin-top:12px;font-family:var(--font-b);transition:background .2s;text-decoration:none;text-align:center}
 .date-btn:hover{background:var(--brand-dark)}
+.dates-footer{text-align:center;margin-top:24px}
+.dates-footer a{color:var(--brand);font-weight:600;text-decoration:none;font-size:.9rem}
+.dates-footer a:hover{text-decoration:underline}
 
 /* ========= COURSE INFO ========= */
 .info{padding:56px 0;background:var(--white)}
-.info-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px}
-.info-card{background:var(--bg);border:1px solid var(--border);border-radius:var(--radius);padding:24px}
-.info-card h3{font-family:var(--font-h);font-size:1rem;margin-bottom:12px;color:var(--dark)}
+.info-split{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start}
+.info-image{border-radius:var(--radius);overflow:hidden;position:relative}
+.info-image img{width:100%;height:auto;display:block}
+.info-cards{display:flex;flex-direction:column;gap:16px}
+.info-card{background:var(--bg);border:1px solid var(--border);border-radius:var(--radius);padding:20px}
+.info-card h3{font-family:var(--font-h);font-size:.95rem;margin-bottom:10px;color:var(--dark);display:flex;align-items:center;gap:8px}
+.info-card h3 svg{color:var(--brand)}
 .info-list{list-style:none}
-.info-list li{padding:8px 0;border-bottom:1px solid var(--border);font-size:.9rem;display:flex;align-items:flex-start;gap:10px}
+.info-list li{padding:6px 0;border-bottom:1px solid var(--border);font-size:.85rem;display:flex;align-items:flex-start;gap:8px;color:var(--text)}
 .info-list li:last-child{border-bottom:none}
 .info-list li svg{color:var(--brand);flex-shrink:0;margin-top:3px}
 
+/* ========= PROCESS ========= */
+.process{padding:56px 0;background:var(--bg-alt)}
+.process-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.process-step{text-align:center;position:relative}
+.process-num{width:40px;height:40px;background:var(--brand);color:white;font-family:var(--font-h);font-weight:700;font-size:1rem;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 12px}
+.process-step h4{font-family:var(--font-h);font-size:.9rem;margin-bottom:6px;color:var(--dark)}
+.process-step p{font-size:.8rem;color:var(--text2);line-height:1.5}
+
+/* ========= PRICING ========= */
+.pricing{padding:56px 0;background:var(--white)}
+.pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.pricing-card{background:var(--bg);border:1px solid var(--border);border-radius:var(--radius);padding:28px;text-align:center}
+.pricing-card.featured{background:var(--navy);border:none;color:white;position:relative}
+.pricing-card.featured::before{content:'Mest valgt';position:absolute;top:-10px;left:50%;transform:translateX(-50%);background:var(--brand);color:white;font-size:.65rem;font-weight:700;padding:2px 10px;border-radius:4px;text-transform:uppercase;white-space:nowrap}
+.pricing-label{font-size:.75rem;text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px;font-weight:600}
+.pricing-amount{font-family:var(--font-h);font-weight:700;font-size:2rem}
+.pricing-note{font-size:.8rem;margin-top:4px}
+
+/* ========= TESTIMONIALS ========= */
+.testimonials{padding:56px 0;background:var(--bg-alt)}
+.testimonial-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.testimonial-card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:24px}
+.testimonial-stars{color:var(--brand);font-size:1rem;margin-bottom:10px;letter-spacing:2px}
+.testimonial-text{font-size:.88rem;color:var(--text);line-height:1.7;margin-bottom:14px;font-style:italic}
+.testimonial-author{font-size:.8rem;font-weight:600;color:var(--dark)}
+.testimonial-role{font-size:.75rem;color:var(--text3)}
+
 /* ========= FAQ ========= */
 .faq{padding:56px 0}
+.faq-grid{display:grid;grid-template-columns:1fr 1fr;gap:0 40px}
 .faq-item{border-bottom:1px solid var(--border);padding:16px 0}
-.faq-q{font-family:var(--font-h);font-weight:600;font-size:.95rem;cursor:pointer;display:flex;justify-content:space-between;align-items:center;color:var(--dark)}
-.faq-q::after{content:'+';font-size:1.3rem;color:var(--text3);transition:transform .2s}
+.faq-q{font-family:var(--font-h);font-weight:600;font-size:.9rem;cursor:pointer;display:flex;justify-content:space-between;align-items:center;color:var(--dark);gap:12px}
+.faq-q::after{content:'+';font-size:1.3rem;color:var(--text3);transition:transform .2s;flex-shrink:0}
 .faq-item.open .faq-q::after{transform:rotate(45deg)}
-.faq-a{max-height:0;overflow:hidden;transition:max-height .3s ease;font-size:.9rem;color:var(--text2);line-height:1.7}
-.faq-item.open .faq-a{max-height:200px;padding-top:12px}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .3s ease;font-size:.85rem;color:var(--text2);line-height:1.7}
+.faq-item.open .faq-a{max-height:300px;padding-top:10px}
 
 /* ========= BOTTOM CTA ========= */
-.bottom-cta{background:var(--dark);color:var(--white);padding:48px 0;text-align:center}
-.bottom-cta h2{font-family:var(--font-h);font-size:1.8rem;margin-bottom:8px}
-.bottom-cta p{color:rgba(255,255,255,.6);margin-bottom:24px}
-.bottom-cta .price-btn{display:inline-block;width:auto;padding:14px 40px;font-size:1.05rem}
+.bottom-cta{background:var(--navy);color:var(--white);padding:56px 0;text-align:center;position:relative;overflow:hidden}
+.bottom-cta::before{content:'';position:absolute;top:-60px;right:-60px;width:200px;height:200px;background:rgba(243,124,32,.1);border-radius:50%}
+.bottom-cta h2{font-family:var(--font-h);font-size:clamp(1.4rem,2.5vw,1.8rem);margin-bottom:8px;position:relative}
+.bottom-cta p{color:rgba(255,255,255,.6);margin-bottom:24px;position:relative}
+.bottom-cta .hero-btn{position:relative}
 
 /* ========= FOOTER ========= */
-.footer{background:var(--dark);color:rgba(255,255,255,.4);padding:24px 0;border-top:1px solid rgba(255,255,255,.06);font-size:.75rem;text-align:center}
+.footer{background:var(--dark);color:rgba(255,255,255,.4);padding:24px 0;font-size:.75rem;text-align:center}
+.footer a{color:rgba(255,255,255,.5);text-decoration:none}
+.footer a:hover{color:var(--brand)}
 
 /* ========= MOBILE STICKY CTA ========= */
 .mobile-cta{display:none;position:fixed;bottom:0;left:0;right:0;background:var(--white);border-top:1px solid var(--border);padding:12px 16px;z-index:50;box-shadow:0 -2px 12px rgba(0,0,0,.08)}
@@ -127,75 +196,89 @@ img{max-width:100%;display:block}
 
 /* ========= RESPONSIVE ========= */
 @media(max-width:768px){
-  .hero-grid{grid-template-columns:1fr;gap:24px}
-  .hero h1{font-size:1.8rem}
-  .hero-price{min-width:auto}
-  .hero-stats{gap:20px}
+  .hero-grid{grid-template-columns:1fr;min-height:auto}
+  .hero-content{padding:40px 24px 24px}
+  .hero-image-wrap{height:280px}
+  .hero-price-badge{bottom:12px;right:12px;padding:14px 16px}
+  .hero-price-badge .amount{font-size:1.3rem}
+  .truck-grid{grid-template-columns:1fr}
+  .gallery-grid{grid-template-columns:1fr}
+  .gallery-grid img{height:220px}
   .dates-grid{grid-template-columns:1fr}
-  .info-grid{grid-template-columns:1fr}
-  .trust-items{gap:20px}
+  .info-split{grid-template-columns:1fr}
+  .process-grid{grid-template-columns:repeat(2,1fr);gap:16px}
+  .testimonial-grid{grid-template-columns:1fr}
+  .faq-grid{grid-template-columns:1fr}
+  .pricing-grid{grid-template-columns:1fr}
+  .trust-items{gap:16px}
   .mobile-cta{display:block}
   body{padding-bottom:70px}
   .header-cta{display:none}
 }
-
-/* ========= EXAMPLE BADGE ========= */
-.example-banner{background:linear-gradient(90deg,#2563EB,#7C3AED);color:white;text-align:center;padding:10px;font-size:.8rem;font-weight:600;letter-spacing:.02em}
+@media(max-width:480px){
+  .process-grid{grid-template-columns:1fr}
+}
 </style>
 </head>
 <body>
 
-<!-- Example badge — remove for production -->
-<div class="example-banner">EXAMPLE — Optimized Landing Page Concept by PPC.io for Smooth Gruppen</div>
+<!-- DRAFT Banner — 3 placeholders need replacing -->
+<div class="draft-banner">
+  DRAFT &mdash; Truckf&oslash;rerkurs Landing Page Concept
+  <span>3 items to replace: testimonials, form endpoint, tracking</span>
+</div>
+
+<!-- Example badge -->
+<div class="example-banner">EXAMPLE &mdash; Optimized Landing Page Concept by PPC.io for Smooth Gruppen</div>
 
 <!-- Header -->
 <header class="header">
 <div class="container">
   <div class="header-inner">
-    <a href="#" class="logo">Kurs og <span>Sikkerhet</span></a>
-    <a href="tel:+4721544010" class="header-phone">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-      21 54 40 10
+    <!-- Real logo from kursogsikkerhet.no -->
+    <a href="#">
+      <img src="https://kursogsikkerhet.no/wp-content/uploads/sites/6/2024/03/cropped-kurs_og_sikkerhet_as-450x92.png"
+           alt="Kurs og Sikkerhet AS" class="header-logo" width="220" height="45">
     </a>
-    <a href="#dates" class="header-cta">Meld deg p&aring; &rarr;</a>
+    <a href="tel:+4795160120" class="header-phone">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      951 60 120
+    </a>
+    <a href="#dates" class="header-cta">Se ledige kurs &rarr;</a>
   </div>
 </div>
 </header>
 
-<!-- Hero -->
+<!-- Hero with real image from kursogsikkerhet.no -->
 <section class="hero">
-<div class="container">
   <div class="hero-grid">
-    <div>
+    <div class="hero-content">
       <div class="hero-badge">
         <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-        Ledig plasser &mdash; neste kurs snart
+        2 000+ truckf&oslash;rere utdannet &aring;rlig
       </div>
-      <h1>Truckf&oslash;rerkurs<br><span>fra kr 4.500</span></h1>
-      <p class="hero-sub">F&aring; truckf&oslash;rerbevis (T1&ndash;T5) med Norges st&oslash;rste kursleverand&oslash;r. Teori + praksis p&aring; &eacute;n dag. Kursbevis samme dag.</p>
-      <div class="hero-stats">
-        <div class="hero-stat"><div class="hero-stat-val">98%</div><div class="hero-stat-label">Kurs avholdt</div></div>
-        <div class="hero-stat"><div class="hero-stat-val">15+</div><div class="hero-stat-label">Byer</div></div>
-        <div class="hero-stat"><div class="hero-stat-val">50+</div><div class="hero-stat-label">Kurstyper</div></div>
+      <h1>Truckf&oslash;rerkurs<br>T1&ndash;T5 <span>fra kr 4.500</span></h1>
+      <p class="hero-sub">F&aring; truckf&oslash;rerbevis med Norges st&oslash;rste kursleverand&oslash;r. Teori som fjernundervisning + praksis over hele landet. Kursbevis etter best&aring;tt pr&oslash;ve.</p>
+      <div class="hero-cta-row">
+        <a href="#dates" class="hero-btn">Se ledige datoer <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></a>
+        <a href="tel:+4795160120" class="hero-btn-outline">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          Ring 951 60 120
+        </a>
       </div>
     </div>
-    <div class="hero-price">
-      <h3>Book truckf&oslash;rerkurs</h3>
-      <div class="price-main">
+    <div class="hero-image-wrap">
+      <!-- REF-IMAGE: Real truckforerkurs hero image from kursogsikkerhet.no — student operating T4 forklift -->
+      <img src="https://kursogsikkerhet.no/wp-content/uploads/sites/6/2024/03/truckUlogo-1030x1030.webp"
+           alt="Truckf&oslash;rerkurs &mdash; smilende elev bak rattet i T4 motvektstruck etter best&aring;tt oppkj&oslash;ring"
+           class="hero-image" width="1030" height="1030" loading="eager">
+      <div class="hero-price-badge">
         <span class="from">fra</span>
         <span class="amount">kr 4.500</span>
-        <span class="suffix">per person</span>
+        <span class="suffix">teori per person</span>
       </div>
-      <p class="price-note">Inkl. teori, kursmateriell og dokumentasjon. Praksis fra kr 4.150 ekstra.</p>
-      <a href="#dates" class="price-btn">Se ledige datoer &darr;</a>
-      <div class="price-or">eller ring oss direkte</div>
-      <a href="tel:+4721544010" class="price-phone">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-        21 54 40 10
-      </a>
     </div>
   </div>
-</div>
 </section>
 
 <!-- Trust Bar -->
@@ -204,129 +287,319 @@ img{max-width:100%;display:block}
   <div class="trust-items">
     <div class="trust-item">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-      Landsdekkende kursleverand&oslash;r
+      Norges st&oslash;rste kursleverand&oslash;r
     </div>
     <div class="trust-item">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-      Sertifisert oppl&aelig;ring
+      Sertifisert iht. arbeidsmilj&oslash;loven
     </div>
     <div class="trust-item">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-      Kursbevis samme dag
+      98% av kurs avholdt
     </div>
     <div class="trust-item">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
       Kundeservice 08:00&ndash;20:00
     </div>
+    <!-- REF-IMAGE: TryggKurs trust badge from kursogsikkerhet.no -->
+    <img src="https://kursogsikkerhet.no/wp-content/uploads/sites/6/2025/08/cropped-TryggKurs-logo-1.png"
+         alt="TryggKurs sertifisering" class="trust-badge-img" width="80" height="28" loading="lazy">
   </div>
 </div>
 </div>
 
-<!-- Available Dates -->
-<section class="dates" id="dates">
+<!-- Truck Type Selector with REAL images from kursogsikkerhet.no -->
+<section class="trucks" id="truckklasser">
 <div class="container">
-  <h2 class="section-title">Neste ledige truckf&oslash;rerkurs</h2>
-  <p class="section-sub">Velg dato og sted som passer deg. Alle kurs inkluderer teori og dokumentasjon.</p>
-  <div class="dates-grid">
-    <div class="date-card">
-      <div class="date-city">Oslo</div>
-      <div class="date-date">Mandag 17. mars 2026</div>
-      <div class="date-meta">
-        <span class="date-price">fra kr 4.500</span>
-        <span class="date-spots few">3 plasser igjen</span>
+  <div class="section-label">Velg truckklasse</div>
+  <h2 class="section-title">Truckf&oslash;rerkurs T1&ndash;T5</h2>
+  <p class="section-sub">Alle truckklasser dekkes. Teorien er lik for alle &mdash; den praktiske oppl&aelig;ringen er spesifikk per klasse.</p>
+  <div class="truck-grid">
+    <div class="truck-card">
+      <!-- REF-IMAGE: Real T1 truck image from kursogsikkerhet.no -->
+      <img src="https://kursogsikkerhet.no/wp-content/uploads/sites/6/2022/10/TruckT1-300x216.jpg"
+           alt="T1 &mdash; Trekk-, plukk-, plattform- og palletruck"
+           class="truck-card-img ref-image" width="300" height="216" loading="lazy">
+      <div class="truck-card-body">
+        <div class="truck-name">T1 &mdash; Palletruck</div>
+        <div class="truck-desc">Trekk-, plukk-, plattform- og palletruck. Brukes i lager og logistikk.</div>
+        <div class="truck-price"><span class="from">fra</span> kr 4.500</div>
       </div>
-      <button class="date-btn" onclick="alert('Demo — her ville p&aring;meldingsskjema &aring;pnet')">Meld deg p&aring;</button>
     </div>
-    <div class="date-card">
-      <div class="date-city">Bergen</div>
-      <div class="date-date">Onsdag 19. mars 2026</div>
-      <div class="date-meta">
-        <span class="date-price">fra kr 4.500</span>
-        <span class="date-spots open">Ledige plasser</span>
+    <div class="truck-card">
+      <!-- REF-IMAGE: Real T2 truck image from kursogsikkerhet.no -->
+      <img src="https://kursogsikkerhet.no/wp-content/uploads/sites/6/2022/10/truckT2-300x216.jpg"
+           alt="T2 &mdash; Skyvemast- og st&oslash;ttebeinstruck"
+           class="truck-card-img ref-image" width="300" height="216" loading="lazy">
+      <div class="truck-card-body">
+        <div class="truck-name">T2 &mdash; Skyvemasttruck</div>
+        <div class="truck-desc">Skyvemast- og st&oslash;ttebeinstruck. For h&oslash;y reolh&oslash;yde i lager og distribusjon.</div>
+        <div class="truck-price"><span class="from">fra</span> kr 4.500</div>
       </div>
-      <button class="date-btn" onclick="alert('Demo — her ville p&aring;meldingsskjema &aring;pnet')">Meld deg p&aring;</button>
     </div>
-    <div class="date-card">
-      <div class="date-city">Stavanger</div>
-      <div class="date-date">Fredag 21. mars 2026</div>
-      <div class="date-meta">
-        <span class="date-price">fra kr 4.500</span>
-        <span class="date-spots open">Ledige plasser</span>
+    <div class="truck-card popular">
+      <!-- REF-IMAGE: Real T4 truck image from kursogsikkerhet.no -->
+      <img src="https://kursogsikkerhet.no/wp-content/uploads/sites/6/2022/10/truckT4-300x216.jpg"
+           alt="T4 &mdash; Motvektstruck"
+           class="truck-card-img ref-image" width="300" height="216" loading="lazy">
+      <div class="truck-card-body">
+        <div class="truck-name">T4 &mdash; Motvektstruck</div>
+        <div class="truck-desc">Den vanligste trucktypen. Brukes b&aring;de inne og ute for lasting, lossing og stabling.</div>
+        <div class="truck-price"><span class="from">fra</span> kr 4.500</div>
       </div>
-      <button class="date-btn" onclick="alert('Demo — her ville p&aring;meldingsskjema &aring;pnet')">Meld deg p&aring;</button>
     </div>
-    <div class="date-card">
-      <div class="date-city">Trondheim</div>
-      <div class="date-date">Mandag 24. mars 2026</div>
-      <div class="date-meta">
-        <span class="date-price">fra kr 4.500</span>
-        <span class="date-spots open">Ledige plasser</span>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:16px">
+    <div class="truck-card">
+      <div class="truck-card-body" style="padding-top:20px">
+        <div class="truck-name">T3 &mdash; Svinggaffeltruck</div>
+        <div class="truck-desc">Svinggaffel- og f&oslash;rerl&oslash;ftende truck. For spesialisert lagerarbeid i trange ganger.</div>
+        <div class="truck-price"><span class="from">fra</span> kr 4.500</div>
       </div>
-      <button class="date-btn" onclick="alert('Demo — her ville p&aring;meldingsskjema &aring;pnet')">Meld deg p&aring;</button>
     </div>
-    <div class="date-card">
-      <div class="date-city">Oslo &mdash; Helgekurs</div>
-      <div class="date-date">L&oslash;rdag 22. mars 2026</div>
-      <div class="date-meta">
-        <span class="date-price">fra kr 4.900</span>
-        <span class="date-spots few">5 plasser igjen</span>
+    <div class="truck-card">
+      <div class="truck-card-body" style="padding-top:20px">
+        <div class="truck-name">T5 &mdash; Sidelaster</div>
+        <div class="truck-desc">For transport av langgods som t&oslash;mmer, r&oslash;r og stenger. B&aring;de inne og ute.</div>
+        <div class="truck-price"><span class="from">fra</span> kr 4.500</div>
       </div>
-      <button class="date-btn" onclick="alert('Demo — her ville p&aring;meldingsskjema &aring;pnet')">Meld deg p&aring;</button>
     </div>
-    <div class="date-card">
-      <div class="date-city">Haugesund</div>
-      <div class="date-date">Tirsdag 25. mars 2026</div>
-      <div class="date-meta">
-        <span class="date-price">fra kr 4.500</span>
-        <span class="date-spots open">Ledige plasser</span>
+    <div class="truck-card">
+      <div class="truck-card-body" style="padding-top:20px">
+        <div class="truck-name">C1/C2 &mdash; Teleskoptruck</div>
+        <div class="truck-desc">Teleskoptruck med l&oslash;ftekapasitet inntil 10 tonn. Krever truck-, maskin- eller krankompetanse.</div>
+        <div class="truck-price"><span class="from">Tillegg</span></div>
       </div>
-      <button class="date-btn" onclick="alert('Demo — her ville p&aring;meldingsskjema &aring;pnet')">Meld deg p&aring;</button>
     </div>
   </div>
 </div>
 </section>
 
-<!-- Course Info -->
+<!-- Gallery Strip with REAL images from kursogsikkerhet.no -->
+<section class="gallery">
+  <div class="gallery-grid">
+    <!-- REF-IMAGE: Real truck hero image — student behind wheel of forklift -->
+    <img src="https://kursogsikkerhet.no/wp-content/uploads/sites/6/2024/03/truckUlogo-1030x1030.webp"
+         alt="Elev opererer T4 motvektstruck under truckf&oslash;rerkurs"
+         width="1030" height="1030" loading="lazy" class="ref-image">
+    <!-- REF-IMAGE: Real kundeservice image from kursogsikkerhet.no -->
+    <img src="https://kursogsikkerhet.no/wp-content/uploads/sites/6/2024/03/kundeservice_kurs_og_sikkerhet-1030x1030.webp"
+         alt="Kundeservice hos Kurs og Sikkerhet &mdash; r&aring;dgivning om truckf&oslash;rerkurs"
+         width="1030" height="1030" loading="lazy" class="ref-image">
+    <!-- REF-IMAGE: Real kran/truck training image from kursogsikkerhet.no homepage -->
+    <img src="https://kursogsikkerhet.no/wp-content/uploads/sites/6/2024/03/kranforerkurs_g20-1030x1030.webp"
+         alt="Kursvirksomhet hos Kurs og Sikkerhet &mdash; oppl&aelig;ring i arbeid"
+         width="1030" height="1030" loading="lazy" class="ref-image">
+  </div>
+</section>
+
+<!-- Available Dates (real dates from kursogsikkerhet.no scraped March 2026) -->
+<section class="dates" id="dates">
+<div class="container">
+  <div class="section-label">Ledige kurs</div>
+  <h2 class="section-title">Neste truckf&oslash;rerkurs</h2>
+  <p class="section-sub">Velg dato som passer deg. Teori 08:30&ndash;16:00 over to dager (fjernundervisning + e-l&aelig;ring).</p>
+  <div class="dates-grid">
+    <div class="date-card">
+      <div class="date-city">Landsdekkende</div>
+      <div class="date-date">Torsdag 12. mars 2026</div>
+      <div class="date-time">08:30 &ndash; 16:00 (2 dager)</div>
+      <div class="date-meta">
+        <span class="date-price">fra kr 4.500</span>
+        <span class="date-spots few">F&aring; plasser igjen</span>
+      </div>
+      <a href="#" class="date-btn" onclick="alert('Demo \u2014 her ville p\u00e5meldingsskjema \u00e5pnet')">Meld deg p&aring;</a>
+    </div>
+    <div class="date-card">
+      <div class="date-city">Helgekurs</div>
+      <div class="date-date">L&oslash;rdag 21. mars 2026</div>
+      <div class="date-time">08:30 &ndash; 16:00</div>
+      <div class="date-meta">
+        <span class="date-price">fra kr 4.500</span>
+        <span class="date-spots open">Ledige plasser</span>
+      </div>
+      <a href="#" class="date-btn" onclick="alert('Demo \u2014 her ville p\u00e5meldingsskjema \u00e5pnet')">Meld deg p&aring;</a>
+    </div>
+    <div class="date-card">
+      <div class="date-city">Landsdekkende</div>
+      <div class="date-date">Torsdag 26. mars 2026</div>
+      <div class="date-time">08:30 &ndash; 16:00 (2 dager)</div>
+      <div class="date-meta">
+        <span class="date-price">fra kr 4.500</span>
+        <span class="date-spots open">Ledige plasser</span>
+      </div>
+      <a href="#" class="date-btn" onclick="alert('Demo \u2014 her ville p\u00e5meldingsskjema \u00e5pnet')">Meld deg p&aring;</a>
+    </div>
+    <div class="date-card">
+      <div class="date-city">Landsdekkende</div>
+      <div class="date-date">Mandag 30. mars 2026</div>
+      <div class="date-time">08:30 &ndash; 16:00 (2 dager)</div>
+      <div class="date-meta">
+        <span class="date-price">fra kr 4.500</span>
+        <span class="date-spots open">Ledige plasser</span>
+      </div>
+      <a href="#" class="date-btn" onclick="alert('Demo \u2014 her ville p\u00e5meldingsskjema \u00e5pnet')">Meld deg p&aring;</a>
+    </div>
+    <div class="date-card">
+      <div class="date-city">English course</div>
+      <div class="date-date">Wednesday 9. april 2026</div>
+      <div class="date-time">08:30 &ndash; 16:00</div>
+      <div class="date-meta">
+        <span class="date-price">fra kr 4.500</span>
+        <span class="date-spots open">Ledige plasser</span>
+      </div>
+      <a href="#" class="date-btn" onclick="alert('Demo \u2014 her ville p\u00e5meldingsskjema \u00e5pnet')">Meld deg p&aring;</a>
+    </div>
+    <div class="date-card">
+      <div class="date-city">Helgekurs</div>
+      <div class="date-date">L&oslash;rdag 11. april 2026</div>
+      <div class="date-time">08:30 &ndash; 16:00</div>
+      <div class="date-meta">
+        <span class="date-price">fra kr 4.500</span>
+        <span class="date-spots open">Ledige plasser</span>
+      </div>
+      <a href="#" class="date-btn" onclick="alert('Demo \u2014 her ville p\u00e5meldingsskjema \u00e5pnet')">Meld deg p&aring;</a>
+    </div>
+  </div>
+  <div class="dates-footer">
+    <a href="https://kursogsikkerhet.no/kat/truckforerkurs/">Se alle kommende kurs &rarr;</a>
+  </div>
+</div>
+</section>
+
+<!-- Course Info with real image -->
 <section class="info">
 <div class="container">
-  <h2 class="section-title">Om truckf&oslash;rerkurset</h2>
-  <p class="section-sub">Alt du trenger &aring; vite f&oslash;r du melder deg p&aring;</p>
-  <div class="info-grid">
-    <div class="info-card">
-      <h3>Hva er inkludert?</h3>
-      <ul class="info-list">
-        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Teoretisk oppl&aelig;ring (1 dag)</li>
-        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Kursmateriell og dokumentasjon</li>
-        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Kursbevis etter best&aring;tt kurs</li>
-        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Registrering i Sentralregisteret</li>
-      </ul>
+  <div class="section-label">Om kurset</div>
+  <h2 class="section-title">Alt du trenger &aring; vite om truckf&oslash;rerkurs</h2>
+  <p class="section-sub">Fra opptakskrav til kursinnhold &mdash; her er oversikten</p>
+  <div class="info-split">
+    <div class="info-image ref-image">
+      <!-- REF-IMAGE: Real kundeservice image from kursogsikkerhet.no -->
+      <img src="https://kursogsikkerhet.no/wp-content/uploads/sites/6/2024/03/kundeservice_kurs_og_sikkerhet-1030x1030.webp"
+           alt="Kundeservice hos Kurs og Sikkerhet hjelper med truckf&oslash;rerkurs"
+           width="1030" height="1030" loading="lazy">
     </div>
-    <div class="info-card">
-      <h3>Truckklasser</h3>
-      <ul class="info-list">
-        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--brand)" stroke-width="2.5"><circle cx="12" cy="12" r="5"/></svg><div><strong>T1</strong> &mdash; Lav&shy;plattformtruck</div></li>
-        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--brand)" stroke-width="2.5"><circle cx="12" cy="12" r="5"/></svg><div><strong>T2</strong> &mdash; H&oslash;y&shy;plattformtruck</div></li>
-        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--brand)" stroke-width="2.5"><circle cx="12" cy="12" r="5"/></svg><div><strong>T4</strong> &mdash; Motvekts&shy;truck (mest popul&aelig;r)</div></li>
-        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--brand)" stroke-width="2.5"><circle cx="12" cy="12" r="5"/></svg><div><strong>T5</strong> &mdash; Skyve&shy;masttruck</div></li>
-      </ul>
+    <div class="info-cards">
+      <div class="info-card">
+        <h3>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          Hva er inkludert i kurset?
+        </h3>
+        <ul class="info-list">
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Modul 1: Arbeidsmilj&oslash;, ansvar og konsekvenser (e-l&aelig;ring)</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Modul 2.2: Truck &mdash; l&oslash;fte- og stablevogner (fjernundervisning)</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Kursmateriell og dokumentasjon</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Registrering i Sentralregisteret</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Kompetansebevis etter best&aring;tt pr&oslash;ve</li>
+        </ul>
+      </div>
+      <div class="info-card">
+        <h3>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+          Praktisk informasjon
+        </h3>
+        <ul class="info-list">
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Alder: Minimum 18 &aring;r (oppl&aelig;ring fra 17)</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Ingen krav til forkunnskaper</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Trenger ikke f&oslash;rerkort for bil</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Sertifikatet gjelder p&aring; ubestemt tid</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Bedriftsinterne kurs p&aring; foresp&oslash;rsel</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Kurs ogs&aring; tilgjengelig p&aring; engelsk</li>
+        </ul>
+      </div>
     </div>
-    <div class="info-card">
-      <h3>Praktisk informasjon</h3>
-      <ul class="info-list">
-        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Kurssted: Oslo, Bergen, Stavanger, Trondheim, + flere</li>
-        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Varighet: 1 dag teori + 1&ndash;2 dager praksis</li>
-        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Gyldighet: Kursbevis m&aring; fornyes hvert 5. &aring;r</li>
-        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Krav: Minimum 18 &aring;r, god helse</li>
-      </ul>
+  </div>
+</div>
+</section>
+
+<!-- Process Steps -->
+<section class="process">
+<div class="container">
+  <div class="section-label">Slik fungerer det</div>
+  <h2 class="section-title">Fra p&aring;melding til truckf&oslash;rerbevis</h2>
+  <p class="section-sub">Fire steg til ditt kompetansebevis</p>
+  <div class="process-grid">
+    <div class="process-step">
+      <div class="process-num">1</div>
+      <h4>Velg kurs og dato</h4>
+      <p>Finn truckklassen du trenger (T1&ndash;T5) og meld deg p&aring; neste kurs.</p>
     </div>
-    <div class="info-card">
-      <h3>Tilleggstjenester</h3>
-      <ul class="info-list">
-        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Praktisk oppl&aelig;ring: fra kr 4.150 per klasse</li>
-        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Avsluttende pr&oslash;ve: kr 8.650 (inkl. sensorgebyr)</li>
-        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Bedriftsinterne kurs: tilpasset oppl&aelig;ring</li>
-        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Kurs p&aring; engelsk: Forklift truck course</li>
-      </ul>
+    <div class="process-step">
+      <div class="process-num">2</div>
+      <h4>Teori (22 timer)</h4>
+      <p>Modul 1 som e-l&aelig;ring + Modul 2.2 som direktesendt fjernundervisning.</p>
+    </div>
+    <div class="process-step">
+      <div class="process-num">3</div>
+      <h4>Praksis (20+ timer)</h4>
+      <p>Modul 3 hos oss + Modul 4 praktisk kj&oslash;reoppl&aelig;ring (hos oss eller via fadderavtale).</p>
+    </div>
+    <div class="process-step">
+      <div class="process-num">4</div>
+      <h4>Oppkj&oslash;ring</h4>
+      <p>Best&aring;tt praktisk pr&oslash;ve gir kompetansebevis. Gjelder p&aring; ubestemt tid.</p>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- Pricing Summary -->
+<section class="pricing">
+<div class="container">
+  <div class="section-label">Priser</div>
+  <h2 class="section-title">Oversikt over priser</h2>
+  <p class="section-sub">Transparent prising &mdash; ingen skjulte kostnader</p>
+  <div class="pricing-grid">
+    <div class="pricing-card">
+      <div class="pricing-label" style="color:var(--text3)">Teori (Modul 1 + 2)</div>
+      <div class="pricing-amount" style="color:var(--dark)">kr 4.500</div>
+      <div class="pricing-note" style="color:var(--text2)">per person, 22 skoletimer</div>
+    </div>
+    <div class="pricing-card featured">
+      <div class="pricing-label" style="color:rgba(255,255,255,.6)">Teori + Praksis</div>
+      <div class="pricing-amount">kr 9.400</div>
+      <div class="pricing-note" style="color:rgba(255,255,255,.6)">per truckklasse (T1&ndash;T5)</div>
+    </div>
+    <div class="pricing-card">
+      <div class="pricing-label" style="color:var(--text3)">Oppkj&oslash;ring</div>
+      <div class="pricing-amount" style="color:var(--dark)">kr 8.650</div>
+      <div class="pricing-note" style="color:var(--text2)">inkl. sensorgebyr og bevis</div>
+    </div>
+  </div>
+  <div style="text-align:center;margin-top:16px;font-size:.8rem;color:var(--text3)">
+    Modul 3 grunnleggende innf&oslash;ring: fra kr 750 per klasse &bull; Modul 4 mengdetrening: fra kr 4.150 per klasse &bull; Bedriftskurs: tilbud p&aring; foresp&oslash;rsel
+  </div>
+</div>
+</section>
+
+<!-- Testimonials -->
+<section class="testimonials">
+<div class="container">
+  <div class="section-label">Tilbakemeldinger</div>
+  <h2 class="section-title">Hva v&aring;re kursdeltagere sier</h2>
+  <p class="section-sub">Over 2.000 truckf&oslash;rere utdannet hvert &aring;r</p>
+  <div class="testimonial-grid">
+    <!-- REPLACE: testimonial — use real customer quotes -->
+    <div class="testimonial-card" style="border:2px dashed var(--brand)">
+      <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+      <p class="testimonial-text">[KUNDEUTTALELSE &mdash; Erstatt med ekte sitat fra kursdeltagere. F.eks. en som tok T4 motvektstruck og fikk lagerjobb etter kurset.]</p>
+      <div class="testimonial-author">[Fullt Navn]</div>
+      <div class="testimonial-role">[Stilling, Bedrift]</div>
+    </div>
+    <!-- REPLACE: testimonial -->
+    <div class="testimonial-card" style="border:2px dashed var(--brand)">
+      <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+      <p class="testimonial-text">[KUNDEUTTALELSE &mdash; Erstatt med ekte sitat. F.eks. en bedriftskunde som sendte lageransatte p&aring; truckf&oslash;rerkurs.]</p>
+      <div class="testimonial-author">[Fullt Navn]</div>
+      <div class="testimonial-role">[HMS-ansvarlig, Bedrift]</div>
+    </div>
+    <!-- REPLACE: testimonial -->
+    <div class="testimonial-card" style="border:2px dashed var(--brand)">
+      <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+      <p class="testimonial-text">[KUNDEUTTALELSE &mdash; Erstatt med ekte sitat. F.eks. om fjernundervisning og fleksibilitet med e-l&aelig;ring.]</p>
+      <div class="testimonial-author">[Fullt Navn]</div>
+      <div class="testimonial-role">[Truckf&oslash;rer]</div>
     </div>
   </div>
 </div>
@@ -335,27 +608,46 @@ img{max-width:100%;display:block}
 <!-- FAQ -->
 <section class="faq">
 <div class="container">
-  <h2 class="section-title">Vanlige sp&oslash;rsm&aring;l</h2>
-  <div class="section-sub">Finner du ikke svar? Ring oss p&aring; 21 54 40 10</div>
-  <div class="faq-item">
-    <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Trenger jeg praktisk oppl&aelig;ring i tillegg til teori?</div>
-    <div class="faq-a">Ja, for &aring; f&aring; truckf&oslash;rerbevis trenger du b&aring;de teori og praksis. Teorikurset koster fra kr 4.500 og den praktiske oppl&aelig;ringen fra kr 4.150 per truckklasse. Du kan ta teori og praksis p&aring; forskjellige dager og steder.</div>
-  </div>
-  <div class="faq-item">
-    <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Hvor lenge er truckf&oslash;rerbeviset gyldig?</div>
-    <div class="faq-a">Truckf&oslash;rerbeviset er gyldig i 5 &aring;r fra utstedelsesdato. Etter 5 &aring;r m&aring; du ta et oppfriskningskurs for &aring; fornye sertifikatet. Vi tilbyr ogs&aring; oppfriskningskurs.</div>
-  </div>
-  <div class="faq-item">
-    <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Kan jeg ta kurset p&aring; engelsk?</div>
-    <div class="faq-a">Ja, vi tilbyr Forklift Truck Course p&aring; engelsk p&aring; utvalgte datoer. Se kurskalenderen for tilgjengelige engelskspraklige kurs, eller ring oss for &aring; h&oslash;re n&aring;r neste kurs g&aring;r.</div>
-  </div>
-  <div class="faq-item">
-    <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Hva er forskjellen p&aring; T1, T2, T4 og T5?</div>
-    <div class="faq-a">T1 er lavplattformtruck, T2 er h&oslash;yplattformtruck, T4 er motvektstruck (den vanligste typen) og T5 er skyvemasttruck. De fleste bedrifter trenger T4 (motvektstruck). Usikker p&aring; hvilken klasse du trenger? Ring oss s&aring; hjelper vi deg.</div>
-  </div>
-  <div class="faq-item">
-    <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Tilbyr dere bedriftsinterne kurs?</div>
-    <div class="faq-a">Ja, vi tilbyr bedriftsinterne kurs der vi kommer til din arbeidsplass. Dette er ofte mer kostnadseffektivt for bedrifter som skal kurse flere ansatte. Ta kontakt for tilbud p&aring; bedriftsinterne kurs.</div>
+  <div class="section-label">Sp&oslash;rsm&aring;l &amp; svar</div>
+  <h2 class="section-title">Vanlige sp&oslash;rsm&aring;l om truckf&oslash;rerkurs</h2>
+  <p class="section-sub">Finner du ikke svar? Ring oss p&aring; 951 60 120</p>
+  <div class="faq-grid">
+    <div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Hvem trenger truckf&oslash;rerkurs?</div>
+        <div class="faq-a">Enhver som skal operere trucker i Norge m&aring; inneha et gyldig kompetansebevis. Dette oppn&aring;s gjennom &aring; gjennomf&oslash;re sertifisert sikkerhetsoppl&aelig;ring for den eller de truckklassene man skal operere. Det er arbeidsgivers ansvar &aring; p&aring;se at arbeidstakerne f&aring;r denne oppl&aelig;ringen.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Hva er forskjellen p&aring; T1, T2, T3, T4 og T5?</div>
+        <div class="faq-a">T1 er palletruck, T2 er skyvemast- og st&oslash;ttebeinstruck, T3 er svinggaffel- og f&oslash;rerl&oslash;ftende truck, T4 er motvektstruck (den vanligste) og T5 er sidelaster. De fleste bedrifter trenger T4. Usikker? Ring oss s&aring; hjelper vi deg.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Hvem kan ta kurset?</div>
+        <div class="faq-a">For &aring; f&oslash;re truck p&aring; egen h&aring;nd m&aring; du v&aelig;re fylt 18 &aring;r, men oppl&aelig;ringen kan starte ved fylte 17 &aring;r. Kompetansebeviset utstedes ved fylte 18 &aring;r. Det er ingen krav til forkunnskaper, og du trenger ikke f&oslash;rerkort for bil.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Hva koster det totalt?</div>
+        <div class="faq-a">Teorikurset (Modul 1 + 2) koster fra kr 4.500. Grunnleggende innf&oslash;ring (Modul 3) koster fra kr 750 per klasse. Mengdetrening (Modul 4) koster fra kr 4.150 per klasse. Oppkj&oslash;ring med sensorgebyr: kr 8.650. Bedriftskunder f&aring;r spesialtilbud.</div>
+      </div>
+    </div>
+    <div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Hvor lenge gjelder sertifikatet?</div>
+        <div class="faq-a">Kompetansebeviset for truck gjelder p&aring; ubestemt tid. Det er imidlertid opp til den enkelte &aring; vurdere sin egnethet. Dersom det har g&aring;tt lang tid siden sist, b&oslash;r man vurdere &aring; ta oppl&aelig;ringen p&aring; nytt.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Kan jeg ta kurset p&aring; engelsk?</div>
+        <div class="faq-a">Ja, vi tilbyr Forklift Truck Course p&aring; engelsk p&aring; utvalgte datoer. Se kurskalenderen for tilgjengelige engelskpr&aring;klige kurs, eller ring oss for mer informasjon.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Tilbyr dere bedriftsinterne kurs?</div>
+        <div class="faq-a">Ja, vi tilrettelegger fleksible kurs og kan organisere kurs p&aring; kort varsel tilpasset din bedrift. Vi kan komme til din arbeidsplass. Ta kontakt for skreddersydd tilbud.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Hva er en fadderavtale?</div>
+        <div class="faq-a">Etter teori og Modul 3 kan du gjennomf&oslash;re 20 timer praktisk kj&oslash;reoppl&aelig;ring (Modul 4) via en godkjent fadderavtale p&aring; arbeidsplassen, i stedet for hos oss. En erfaren truckf&oslash;rer veileder deg under mengdetreningen.</div>
+      </div>
+    </div>
   </div>
 </div>
 </section>
@@ -363,16 +655,28 @@ img{max-width:100%;display:block}
 <!-- Bottom CTA -->
 <section class="bottom-cta">
 <div class="container">
-  <h2>Klar for &aring; booke truckf&oslash;rerkurs?</h2>
-  <p>Velg dato og sted &mdash; kursbevis samme dag som best&aring;tt kurs</p>
-  <a href="#dates" class="price-btn">Se ledige datoer &uarr;</a>
+  <h2>Klar for &aring; bli truckf&oslash;rer?</h2>
+  <p>Neste kurs g&aring;r 12. mars &mdash; fra kr 4.500 per person</p>
+  <a href="#dates" class="hero-btn">Se ledige datoer &uarr;</a>
+  <div style="margin-top:16px">
+    <a href="tel:+4795160120" style="color:rgba(255,255,255,.6);text-decoration:none;font-size:.9rem">
+      Eller ring oss: <strong style="color:white">951 60 120</strong> (08:00&ndash;20:00)
+    </a>
+  </div>
 </div>
 </section>
 
 <!-- Footer -->
 <footer class="footer">
 <div class="container">
-  <p>&copy; 2026 Kurs og Sikkerhet AS (en del av Presto Training) &mdash; Sertifisert oppl&aelig;ring siden 2005 &mdash; 21 54 40 10 &mdash; post@kursogsikkerhet.no</p>
+  <div style="display:flex;justify-content:center;align-items:center;gap:16px;margin-bottom:12px">
+    <img src="https://kursogsikkerhet.no/wp-content/uploads/sites/6/2024/03/cropped-kurs_og_sikkerhet_as-300x62.png"
+         alt="Kurs og Sikkerhet AS" style="height:24px;width:auto;opacity:.6" width="300" height="62" loading="lazy">
+  </div>
+  <p>&copy; 2026 Kurs og Sikkerhet AS (en del av Presto Training) &mdash; <a href="tel:+4795160120">951 60 120</a> &mdash; <a href="mailto:post@kursogsikkerhet.no">post@kursogsikkerhet.no</a></p>
+  <p style="margin-top:4px">&Aring;pningstid: Alle hverdager 08:00&ndash;20:00 | Chat til kl 16:00</p>
+  <!-- REPLACE: cookie-consent — GDPR consent banner required -->
+  <!-- REPLACE: tracking — Google Analytics, conversion pixels -->
 </div>
 </footer>
 
@@ -380,7 +684,7 @@ img{max-width:100%;display:block}
 <div class="mobile-cta">
 <div class="mobile-cta-inner">
   <div class="price-info">Truckf&oslash;rerkurs<strong>fra kr 4.500</strong></div>
-  <a href="#dates" class="price-btn" style="padding:12px 24px;white-space:nowrap;font-size:.9rem">Meld deg p&aring;</a>
+  <a href="#dates" class="hero-btn" style="padding:12px 24px;white-space:nowrap;font-size:.9rem">Se kurs</a>
 </div>
 </div>
 
