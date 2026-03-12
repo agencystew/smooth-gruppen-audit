@@ -4,59 +4,147 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Smooth Gruppen — PPC.io Audit Package</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
   * { margin: 0; padding: 0; box-sizing: border-box; }
-  body { font-family: 'Inter', sans-serif; background: #0f0f1a; color: #e2e8f0; min-height: 100vh; padding: 40px 20px; }
-  .container { max-width: 720px; margin: 0 auto; }
-  .logo { font-size: 11px; text-transform: uppercase; letter-spacing: 0.15em; color: #a78bfa; font-weight: 600; margin-bottom: 8px; }
-  h1 { font-size: 28px; font-weight: 700; margin-bottom: 6px; }
-  .subtitle { color: #94a3b8; font-size: 14px; margin-bottom: 32px; }
-  .section-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.12em; color: #a78bfa; font-weight: 600; margin-bottom: 12px; margin-top: 32px; }
-  .card { background: #1a1a2e; border: 1px solid #2a2a3e; border-radius: 12px; padding: 20px 24px; margin-bottom: 12px; text-decoration: none; display: block; transition: all 0.2s; }
-  .card:hover { border-color: #a78bfa; transform: translateY(-1px); }
-  .card h3 { color: #f1f5f9; font-size: 16px; font-weight: 600; margin-bottom: 4px; }
-  .card p { color: #94a3b8; font-size: 13px; line-height: 1.5; }
-  .badge { display: inline-block; font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; padding: 3px 8px; border-radius: 4px; margin-left: 8px; }
-  .badge-pdf { background: #7c3aed22; color: #a78bfa; }
+  body { font-family: 'Inter', sans-serif; background: #0f0f1a; color: #e2e8f0; min-height: 100vh; }
+
+  /* Header */
+  .header { padding: 48px 20px 0; text-align: center; }
+  .logo { font-size: 11px; text-transform: uppercase; letter-spacing: 0.2em; color: #a78bfa; font-weight: 600; margin-bottom: 12px; }
+  h1 { font-size: 32px; font-weight: 700; margin-bottom: 6px; line-height: 1.2; }
+  .subtitle { color: #94a3b8; font-size: 15px; margin-bottom: 8px; }
+  .meta { color: #64748b; font-size: 12px; margin-bottom: 40px; }
+
+  /* Container */
+  .container { max-width: 800px; margin: 0 auto; padding: 0 20px 60px; }
+
+  /* Section labels */
+  .section-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.12em; color: #a78bfa; font-weight: 600; margin-bottom: 16px; margin-top: 40px; padding-bottom: 8px; border-bottom: 1px solid #1e1e32; }
+
+  /* Cards */
+  .card { background: #1a1a2e; border: 1px solid #2a2a3e; border-radius: 12px; padding: 20px 24px; margin-bottom: 12px; text-decoration: none; display: flex; align-items: flex-start; gap: 16px; transition: all 0.2s; }
+  .card:hover { border-color: #a78bfa; transform: translateY(-2px); box-shadow: 0 4px 20px rgba(167,139,250,0.08); }
+  .card-icon { width: 40px; height: 40px; border-radius: 10px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 18px; }
+  .card-icon-report { background: #7c3aed18; }
+  .card-icon-pdf { background: #7c3aed18; }
+  .card-icon-kos { background: #f37c2018; }
+  .card-icon-tk { background: #428bca18; }
+  .card-body { flex: 1; min-width: 0; }
+  .card h3 { color: #f1f5f9; font-size: 15px; font-weight: 600; margin-bottom: 4px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+  .card p { color: #94a3b8; font-size: 13px; line-height: 1.6; }
+  .card .detail { color: #64748b; font-size: 11px; margin-top: 6px; }
+
+  /* Badges */
+  .badge { display: inline-block; font-size: 9px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; padding: 2px 7px; border-radius: 4px; }
   .badge-html { background: #05966922; color: #34d399; }
-  .badge-new { background: #f59e0b22; color: #fbbf24; }
-  .footer { margin-top: 40px; padding-top: 20px; border-top: 1px solid #2a2a3e; font-size: 12px; color: #64748b; text-align: center; }
+  .badge-pdf { background: #7c3aed22; color: #a78bfa; }
+  .badge-kos { background: #f37c2022; color: #f37c20; }
+  .badge-tk { background: #428bca22; color: #6cb4ee; }
+
+  /* Mockup grid */
+  .mockup-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
+  .mockup-card { background: #1a1a2e; border: 1px solid #2a2a3e; border-radius: 12px; padding: 18px; text-decoration: none; display: block; transition: all 0.2s; }
+  .mockup-card:hover { border-color: #a78bfa; transform: translateY(-2px); box-shadow: 0 4px 20px rgba(167,139,250,0.08); }
+  .mockup-card .brand-bar { height: 4px; border-radius: 2px; margin-bottom: 14px; }
+  .mockup-card h3 { color: #f1f5f9; font-size: 14px; font-weight: 600; margin-bottom: 4px; }
+  .mockup-card .course { color: #94a3b8; font-size: 12px; margin-bottom: 8px; }
+  .mockup-card .features { list-style: none; font-size: 11px; color: #64748b; line-height: 1.8; }
+  .mockup-card .features li::before { content: ''; display: inline-block; width: 5px; height: 5px; border-radius: 50%; margin-right: 6px; vertical-align: middle; }
+  .mockup-card.kos .features li::before { background: #f37c20; }
+  .mockup-card.tk .features li::before { background: #428bca; }
+
+  /* Footer */
+  .footer { margin-top: 48px; padding: 20px; border-top: 1px solid #1e1e32; font-size: 12px; color: #475569; text-align: center; line-height: 1.6; }
+  .footer a { color: #a78bfa; text-decoration: none; }
+
+  @media (max-width: 640px) {
+    .mockup-grid { grid-template-columns: 1fr; }
+    h1 { font-size: 24px; }
+  }
 </style>
 </head>
 <body>
-<div class="container">
+
+<div class="header">
   <div class="logo">PPC.io</div>
-  <h1>Smooth Gruppen — Audit Package</h1>
-  <p class="subtitle">Google Ads audit, landing page analysis, and redesign mockups</p>
+  <h1>Smooth Gruppen</h1>
+  <p class="subtitle">Google Ads Audit &amp; Landing Page Redesigns</p>
+  <p class="meta">Prepared for Magnus Smooth &middot; March 2026 &middot; Confidential</p>
+</div>
+
+<div class="container">
 
   <div class="section-label">Audit Report</div>
+
   <a class="card" href="audit-report.html">
-    <h3>Full Google Ads Audit <span class="badge badge-html">HTML</span></h3>
-    <p>19-page visual audit with annotated screenshots, competitive analysis, waste breakdown, and growth roadmap. Interactive version — best viewed in browser.</p>
+    <div class="card-icon card-icon-report">📊</div>
+    <div class="card-body">
+      <h3>Full Google Ads Audit <span class="badge badge-html">Interactive</span></h3>
+      <p>19-page visual audit covering both accounts (Kurs og Sikkerhet + TryggKurs). Annotated screenshots, waste analysis, competitive landscape, and growth roadmap.</p>
+      <div class="detail">Best viewed in browser &middot; 11 MB &middot; All figures in NOK</div>
+    </div>
   </a>
+
   <a class="card" href="audit-report.pdf">
-    <h3>Audit Report <span class="badge badge-pdf">PDF</span></h3>
-    <p>Same report as print-ready PDF (7.2 MB). For offline reading or sharing.</p>
+    <div class="card-icon card-icon-pdf">📄</div>
+    <div class="card-body">
+      <h3>Audit Report <span class="badge badge-pdf">PDF</span></h3>
+      <p>Print-ready version of the full audit. Same content, optimized for offline reading or forwarding.</p>
+      <div class="detail">7.2 MB &middot; A4 format</div>
+    </div>
   </a>
 
   <div class="section-label">Landing Page Redesign Mockups</div>
-  <a class="card" href="mockup-truckforerkurs.html">
-    <h3>Truckforerkurs (Forklift Course) <span class="badge badge-html">KoS</span></h3>
-    <p>Optimized landing page for truckforerkurs — prices upfront, date cards with booking CTAs, trust bar, mobile-first.</p>
-  </a>
-  <a class="card" href="mockup-maskinforerkurs.html">
-    <h3>Maskinforerkurs (Machine Operator) <span class="badge badge-new">New</span></h3>
-    <p>Machine type selector (M1-M6), pricing per type, course dates with cities, B2B section for employer bookings.</p>
-  </a>
-  <a class="card" href="mockup-verneombudskurs.html">
-    <h3>Verneombudskurs (Safety Representative) <span class="badge badge-new">New</span></h3>
-    <p>TryggKurs brand. Legal-requirement-first messaging, 3 format options, scarcity indicators, law citations.</p>
-  </a>
+  <p style="color: #94a3b8; font-size: 13px; margin-bottom: 16px; line-height: 1.6;">Three course pages rebuilt to show what conversion-optimized landing pages look like for Smooth Gruppen. Each uses real images, real branding, and real course data extracted from your websites. These are starting points — not final production pages.</p>
+
+  <div class="mockup-grid">
+    <a class="mockup-card kos" href="mockup-truckforerkurs.html">
+      <div class="brand-bar" style="background: #f37c20;"></div>
+      <h3>Truckforerkurs <span class="badge badge-kos">KoS</span></h3>
+      <div class="course">Forklift / Truck Course</div>
+      <ul class="features">
+        <li>Prices upfront (fra kr 4.500)</li>
+        <li>Date cards with booking CTAs</li>
+        <li>Trust bar + FAQ</li>
+        <li>Mobile-first responsive</li>
+      </ul>
+    </a>
+
+    <a class="mockup-card kos" href="mockup-maskinforerkurs.html">
+      <div class="brand-bar" style="background: #f37c20;"></div>
+      <h3>Maskinforerkurs <span class="badge badge-kos">KoS</span></h3>
+      <div class="course">Machine Operator Course</div>
+      <ul class="features">
+        <li>Real photos from your site</li>
+        <li>M1-M6 machine type selector</li>
+        <li>Pricing per machine type</li>
+        <li>6 upcoming dates with cities</li>
+        <li>B2B employer section</li>
+      </ul>
+    </a>
+
+    <a class="mockup-card tk" href="mockup-verneombudskurs.html">
+      <div class="brand-bar" style="background: #428bca;"></div>
+      <h3>Verneombudskurs <span class="badge badge-tk">TK</span></h3>
+      <div class="course">Safety Representative Course</div>
+      <ul class="features">
+        <li>Real photos from your site</li>
+        <li>Legal requirement (AML 6-1)</li>
+        <li>3 format options with pricing</li>
+        <li>Scarcity indicators</li>
+        <li>Penalty/compliance urgency</li>
+      </ul>
+    </a>
+  </div>
 
   <div class="footer">
-    Confidential — Prepared by PPC.io for Smooth Gruppen &middot; March 2026
+    Confidential &middot; Prepared by <a href="https://ppc.io">PPC.io</a> for Smooth Gruppen<br>
+    Questions? <a href="mailto:stewart@ppc.io">stewart@ppc.io</a>
   </div>
+
 </div>
 </body>
 </html>
